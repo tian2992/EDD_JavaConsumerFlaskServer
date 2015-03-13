@@ -51,10 +51,18 @@ def display_chatbot_ui():
   
 
 @app.route('/aviones/agregar', methods=['POST'])
-def create_message():
-  message_sent = request.form['message']
-  app.logger.debug(message_sent)
-  return "creado :"+ message_sent
+def create_plane():
+  '''Creates a plane instance based on a POST form with name and model set, returns the object.
+  
+  Useage sample: $ curl -X POST -d "name=avioncio&model=797-5000" http://localhost:5000/aviones/agregar  
+  '''
+    
+  name_sent = request.form['name']
+  model_sent = request.form['model']
+  plane = Plane(name_sent, model_sent)
+  app.logger.debug(unicode(plane.create_public_view()))
+  planes_list.append(plane)
+  return jsonify(plane.create_public_view())
 
 
 @app.route('/saludar')
