@@ -1,8 +1,9 @@
 #!/usr/bin/env python2
 import json
 import uuid
+import random
 
-from flask import Flask, session, request, render_template, jsonify
+from flask import Flask, session, request, render_template, jsonify, Response
 
 
 app = Flask("EDD_codigo_ejemplo_proyecto1")
@@ -29,8 +30,8 @@ planes_list = []
 
 for i in range(10):
   nombre = "avion " + unicode(i)
-  planes_list = {"id": unicode(uuid.uuid4()), "nombre": nombre}
-  aviones.append(avion_o)
+  avion_o = Plane(random.choice(["Aadvark", "Pinguino", "Elefante"])+" "+random.choice(["Azul","Verde","Naranja"]), random.choice(["787-DreamLiner", "737", "747", "A380", "A320", "A340"]))
+  planes_list.append(avion_o)
 
 
 @app.route('/aviones/')
@@ -46,7 +47,7 @@ def display_chatbot_ui():
 
   # Jsonify no funciona aqui
   planes_objects_list = map(lambda plane: plane.create_public_view(), planes_list)
-  return flask.Response(json.dumps(planes_objects_list), mimetype="application/json")
+  return Response(json.dumps(planes_objects_list), mimetype="application/json")
   
 
 @app.route('/aviones/agregar', methods=['POST'])
