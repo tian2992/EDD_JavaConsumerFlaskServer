@@ -1,4 +1,9 @@
 #!/usr/bin/env python2
+'''A small program to demo Flask as the basis of a REST web service.
+
+Author: Sebastian Oliva (200815609@ingenieria.usac.edu.gt)
+'''
+
 import json
 import uuid
 import random

@@ -1,3 +1,8 @@
+/*
+ * A small program to consume REST services using OkHTTP and JSON.
+ * Author: Sebastian Oliva (200815609@ingenieria.usac.edu.gt)
+ */
+
 import java.io.IOException;
 import java.net.URL;
 
