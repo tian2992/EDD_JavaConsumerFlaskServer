@@ -51,6 +51,8 @@ def display_chatbot_ui():
 ##     }
 
   # Jsonify no funciona aqui
+  # http://stackoverflow.com/questions/7907596/json-dumps-vs-flask-jsonify
+  # http://flask.pocoo.org/docs/0.10/security/#json-security
   planes_objects_list = map(lambda plane: plane.create_public_view(), planes_list)
   return Response(json.dumps(planes_objects_list), mimetype="application/json")
   

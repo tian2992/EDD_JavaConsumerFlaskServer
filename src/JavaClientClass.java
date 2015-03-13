@@ -18,12 +18,19 @@ public class JavaClientClass {
 
 	public static OkHttpClient webClient = new OkHttpClient();
 
+	// Moar Recipies at https://github.com/square/okhttp/wiki/Recipes .
+
 	public static void printPlanes() throws IOException {
 		URL url = new URL("http://localhost:5000/aviones/");
 		Request request = new Request.Builder().url(url).build();
 
 		Response response = webClient.newCall(request).execute();
 		String response_string = response.body().string();
+
+
+		// Other ways of doing json parsing:
+		// http://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
+		// https://github.com/ralfstx/minimal-json
 
 		JSONArray objects_array = new JSONArray(response_string);
 		for (int i = 0; i < objects_array.length(); i++) {
